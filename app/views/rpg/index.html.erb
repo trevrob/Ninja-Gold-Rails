@@ -1,0 +1,60 @@
+<html>
+<head>
+	<title>Ninja Gold game</title>
+</head>
+<body>
+	<h1>Ninja Gold Game</h1>
+	<div id='container'>
+		<div id='top'>
+			<h2 id='total_gold'>Total Gold: <%= session[:total_gold] %></h2>
+			<a href="/rpg/reset">Reset</a>
+		</div>
+		<div class='divs'>
+			<h2>Farm</h2>
+			<h3>(earns 10-20 golds)</h3>
+			<form action="/farm" method="post">
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<input type="hidden" name="building" value="farm">
+				<input type="submit" value="Find Gold!">
+			</form>
+		</div>
+		<div class='divs'>
+			<h2>Cave</h2>
+			<h3>(earns 5-10 golds)</h3>
+			<form action="/cave" method="post">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">				
+				<input type="hidden" name="building" value="cave">
+				<input type="submit" value="Find Gold!">
+			</form>
+		</div>	
+		<div class='divs'>
+			<h2>House</h2>
+			<h3>(earns 2-5 golds)</h3>
+			<form action="/house" method="post">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<input type="hidden" name="building" value="house">
+				<input type="submit" value="Find Gold!">
+			</form>
+		</div>	
+		<div class='divs'>
+			<h2>Casino</h2>
+			<h3>(earns/takes 0-50 golds)</h3>
+			<form action="/casino" method="post">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<input type="hidden" name="building" value="casino">
+				<input type="submit" value="Find Gold!">
+			</form>
+		</div>
+		<h2 id='act'>Activity Log:</h2>
+		<div id='activities'>
+			 <% session[:activity].each do |activity| %>
+				<p> <%= activity %> </p>
+			<% end %> 
+			
+			
+			
+		</div>
+	</div>
+</body>
+</html>
+
